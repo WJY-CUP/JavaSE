@@ -15,15 +15,24 @@ public class Employee {
     private double salary;
 
 
-    public Employee() {
-
-    }
-
     public Employee(int id, String name, int age, double salary) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.salary = salary;
+    }
+
+    public Employee() {
+
+    }
+
+    @Override
+    public String toString() {
+        return printInfo();
+    }
+
+    public String printInfo() {
+        return id + "\t" + name + "\t" + age + "\t\t" +salary + "\t";
     }
 
     public int getId() {
@@ -57,5 +66,8 @@ public class Employee {
     public void setSalary(double salary) {
         this.salary = salary;
     }
+
+
+
 
 }

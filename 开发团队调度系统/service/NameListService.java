@@ -1,9 +1,6 @@
 package 开发团队调度系统.service;
 
-import 开发团队调度系统.domain.Architect;
-import 开发团队调度系统.domain.Designer;
-import 开发团队调度系统.domain.Employee;
-import 开发团队调度系统.domain.Programmer;
+import 开发团队调度系统.domain.*;
 
 /**
  * @Author: Wan Jiangyuan
@@ -21,10 +18,12 @@ public class NameListService extends TeamException{
         for (int i = 0; i < employees.length; i++){
             switch (Data.EMPLOYEES[i][0]) {
                 case "10":
-                    employees[i].setId(Integer.parseInt(Data.EMPLOYEES[i][1]));
-                    employees[i].setName(Data.EMPLOYEES[i][2]);
-                    employees[i].setAge(Integer.parseInt(Data.EMPLOYEES[i][3]));
-                    employees[i].setSalary(Double.parseDouble(Data.EMPLOYEES[i][4]));
+                    Employee employee = new Employee();
+                    employee.setId(Integer.parseInt(Data.EMPLOYEES[i][1]));
+                    employee.setName(Data.EMPLOYEES[i][2]);
+                    employee.setAge(Integer.parseInt(Data.EMPLOYEES[i][3]));
+                    employee.setSalary(Double.parseDouble(Data.EMPLOYEES[i][4]));
+                    employees[i] = employee;
                     break;
 
                 case "11":
@@ -33,7 +32,22 @@ public class NameListService extends TeamException{
                     programmer.setName(Data.EMPLOYEES[i][2]);
                     programmer.setAge(Integer.parseInt(Data.EMPLOYEES[i][3]));
                     programmer.setSalary(Double.parseDouble(Data.EMPLOYEES[i][4]));
+                    switch (Data.EQUIPMENTS[i][0]) {
+                        case "21":
+                            PC pc = new PC(Data.EQUIPMENTS[i][1],Data.EQUIPMENTS[i][2]);
+                            programmer.setEquipment(pc);
+                            break;
+                        case "22":
+                            NoteBook noteBook = new NoteBook(Data.EQUIPMENTS[i][1],Double.parseDouble(Data.EQUIPMENTS[i][2]));
+                            programmer.setEquipment(noteBook);
+                            break;
+                        case "23":
+                            Printer printer = new Printer(Data.EQUIPMENTS[i][1], Data.EQUIPMENTS[i][2]);
+                            programmer.setEquipment(printer);
+                    }
+
                     employees[i] = programmer;
+
                     break;
 
                 case "12":
@@ -42,7 +56,21 @@ public class NameListService extends TeamException{
                     designer.setName(Data.EMPLOYEES[i][2]);
                     designer.setAge(Integer.parseInt(Data.EMPLOYEES[i][3]));
                     designer.setSalary(Double.parseDouble(Data.EMPLOYEES[i][4]));
+
                     designer.setBonus(Double.parseDouble(Data.EMPLOYEES[i][5]));
+                    switch (Data.EQUIPMENTS[i][0]) {
+                        case "21":
+                            PC pc = new PC(Data.EQUIPMENTS[i][1],Data.EQUIPMENTS[i][2]);
+                            designer.setEquipment(pc);
+                            break;
+                        case "22":
+                            NoteBook noteBook = new NoteBook(Data.EQUIPMENTS[i][1],Double.parseDouble(Data.EQUIPMENTS[i][2]));
+                            designer.setEquipment(noteBook);
+                            break;
+                        case "23":
+                            Printer printer = new Printer(Data.EQUIPMENTS[i][1], Data.EQUIPMENTS[i][2]);
+                            designer.setEquipment(printer);
+                    }
                     employees[i] = designer;
                     break;
 
@@ -54,10 +82,25 @@ public class NameListService extends TeamException{
                     architect.setSalary(Double.parseDouble(Data.EMPLOYEES[i][4]));
                     architect.setBonus(Double.parseDouble(Data.EMPLOYEES[i][5]));
                     architect.setStock(Integer.parseInt(Data.EMPLOYEES[i][6]));
+                    switch (Data.EQUIPMENTS[i][0]) {
+                        case "21":
+                            PC pc = new PC(Data.EQUIPMENTS[i][1],Data.EQUIPMENTS[i][2]);
+                            architect.setEquipment(pc);
+                            break;
+                        case "22":
+                            NoteBook noteBook = new NoteBook(Data.EQUIPMENTS[i][1],Double.parseDouble(Data.EQUIPMENTS[i][2]));
+                            architect.setEquipment(noteBook);
+                            break;
+                        case "23":
+                            Printer printer = new Printer(Data.EQUIPMENTS[i][1], Data.EQUIPMENTS[i][2]);
+                            architect.setEquipment(printer);
+                    }
+
                     employees[i] = architect;
                     break;
 
             }
+
         }
     }
 
@@ -78,7 +121,24 @@ public class NameListService extends TeamException{
     }
 
 
-    public static void main(String[] args) {
-
-    }
+//    public Equipment initializeEquipment(Programmer programmer, int i) {
+//
+//        switch (Data.EQUIPMENTS[i][0]) {
+//            case "21":
+//                Equipment equipment = new PC(Data.EQUIPMENTS[i][1],Data.EQUIPMENTS[i][2]);
+//                break;
+//
+//            case "22":
+//                Equipment equipment = new NoteBook(Data.EQUIPMENTS[i][1],Double.parseDouble(Data.EQUIPMENTS[i][2]));
+//                programmer.setEquipment(noteBook);
+//                break;
+//
+//            case "23":
+//                Printer printer = new Printer(Data.EQUIPMENTS[i][1],Data.EQUIPMENTS[i][2]);
+//                programmer.setEquipment(printer);
+//                break;
+//        }
+//
+//
+//    }
 }

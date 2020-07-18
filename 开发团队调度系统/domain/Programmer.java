@@ -15,15 +15,33 @@ public class Programmer extends Employee {
     private Status status = Status.FREE;
     private Equipment equipment;
 
+
     public Programmer() {
+        super();
 
     }
 
-    public Programmer(int id, String name, int age, double salary, int memberId, Status status, Equipment equipment) {
+    public Programmer(int id, String name, int age, double salary,int memberId, Status status, Equipment equipment) {
         super(id, name, age, salary);
         this.memberId = memberId;
         this.status = status;
         this.equipment = equipment;
+    }
+
+//    public String getDescription() {
+//        return getEquipment().toString();
+//    }
+
+
+
+    @Override
+    public String toString() {
+        return super.printInfo() + "程序员" + "\t" + getStatus() + "\t\t\t\t\t" +
+                getEquipment().getDescription();
+    }
+
+    public String printList() {
+        return super.toString() + "程序员"
     }
 
     public int getMemberId() {

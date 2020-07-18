@@ -17,20 +17,10 @@ public class PC implements Equipment {
         this.display = display;
     }
 
-    @Override
-    public String toString() {
-        return "PC{" +
-                "model='" + model + '\'' +
-                ", display='" + display + '\'' +
-                '}';
-    }
 
     @Override
     public String getDescription() {
-        return "PC{" +
-                "model='" + model + '\'' +
-                ", display='" + display + '\'' +
-                '}';
+        return model+display;
     }
 
     public String getModel() {

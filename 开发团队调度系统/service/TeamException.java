@@ -15,8 +15,8 @@ public class TeamException extends Throwable {
 
     }
 
-    public TeamException(String warning) {
-        super(warning);
+    public TeamException(String message) {
+        super(message);
     }
 
 

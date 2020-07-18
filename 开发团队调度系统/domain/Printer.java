@@ -16,20 +16,11 @@ public class Printer implements Equipment {
         this.type = type;
     }
 
-    @Override
-    public String toString() {
-        return "Printer{" +
-                "name='" + name + '\'' +
-                ", type='" + type + '\'' +
-                '}';
-    }
+
 
     @Override
     public String getDescription() {
-        return "Printer{" +
-                "name='" + name + '\'' +
-                ", type='" + type + '\'' +
-                '}';
+        return name+type;
     }
 
     public String getName() {

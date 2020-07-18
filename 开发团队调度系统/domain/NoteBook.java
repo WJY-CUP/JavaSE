@@ -17,20 +17,10 @@ public class NoteBook implements Equipment {
         this.price = price;
     }
 
-    @Override
-    public String toString() {
-        return "NoteBook{" +
-                "model='" + model + '\'' +
-                ", price=" + price +
-                '}';
-    }
 
     @Override
     public String getDescription() {
-        return "NoteBook{" +
-                "model='" + model + '\'' +
-                ", price=" + price +
-                '}';
+        return model+price;
     }
 
     public String getModel() {
