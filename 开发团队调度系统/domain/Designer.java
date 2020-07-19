@@ -14,16 +14,8 @@ public class Designer extends Programmer {
 
     private double bonus;
 
-    public Designer() {
-
-    }
-
-    public Designer(double bonus) {
-        this.bonus = bonus;
-    }
-
-    public Designer(int id, String name, int age, double salary, int memberId, Status status, Equipment equipment, double bonus) {
-        super(id, name, age, salary, memberId, status, equipment);
+    public Designer(int id, String name, int age, double salary, Equipment equipment, double bonus) {
+        super(id, name, age, salary, equipment);
         this.bonus = bonus;
     }
 
@@ -33,6 +25,10 @@ public class Designer extends Programmer {
                 getStatus() + "\t" +
                 getBonus() + "\t\t\t" +
                 getEquipment().getDescription();
+    }
+
+    public String printList() {
+        return super.getMemberId() + "/" + super.printInfo() +  "设计师" + "\t" + bonus;
     }
 
     public double getBonus() {

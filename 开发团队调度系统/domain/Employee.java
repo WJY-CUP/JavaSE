@@ -13,8 +13,7 @@ public class Employee {
     private String name;
     private int age;
     private double salary;
-
-
+    
     public Employee(int id, String name, int age, double salary) {
         this.id = id;
         this.name = name;
@@ -32,7 +31,7 @@ public class Employee {
     }
 
     public String printInfo() {
-        return id + "\t" + name + "\t" + age + "\t\t" +salary + "\t";
+        return id + "\t\t" + name + "\t" + age + "\t\t" +salary + "\t";
     }
 
     public int getId() {

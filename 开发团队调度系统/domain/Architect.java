@@ -14,22 +14,9 @@ public class Architect extends Designer {
 
     private int stock;
 
-    public Architect(int stock) {
+    public Architect(int id, String name, int age, double salary, Equipment equipment, double bonus, int stock) {
+        super(id, name, age, salary, equipment, bonus);
         this.stock = stock;
-    }
-
-    public Architect(double bonus, int stock) {
-        super(bonus);
-        this.stock = stock;
-    }
-
-    public Architect(int id, String name, int age, double salary, int memberId, Status status, Equipment equipment, double bonus, int stock) {
-        super(id, name, age, salary, memberId, status, equipment, bonus);
-        this.stock = stock;
-    }
-
-    public Architect() {
-
     }
 
     @Override
@@ -39,6 +26,11 @@ public class Architect extends Designer {
                 getBonus() + "\t" +
                 getStock() + "\t" +
                 getEquipment().getDescription();
+    }
+
+    public String printList() {
+        return super.getMemberId() + "/" + super.printInfo()  + "架构师" + "\t" + super.getBonus() +
+                "\t" + stock;
     }
 
     public int getStock() {

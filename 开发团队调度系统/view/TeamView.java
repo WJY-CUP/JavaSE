@@ -53,10 +53,9 @@ public class TeamView extends TeamException {
     }
 
     private void listAllEmployees() {
-        System.out.println("ID\t姓名\t年龄\t工资\t职位\t状态\t奖金\t股票\t领用设备\n");
+        System.out.println("ID\t\t姓名\t年龄\t工资\t职位\t状态\t奖金\t股票\t领用设备");
         for (Employee employee : nameListService.getAllEmployees()) {
             System.out.println(employee.toString());
-            System.out.println();
         }
     }
 
@@ -64,12 +63,15 @@ public class TeamView extends TeamException {
         System.out.println("--------------------团队成员列表---------------------\n");
         System.out.println("TDI/ID\t姓名\t年龄\t工资\t职位\t奖金\t股票\n");
         Programmer[] p = teamService.getTeam();
+        if (p.length == 0) {
+            System.out.println("团队暂无成员，请先加入成员");
+        }
         try {
             for (Programmer programmer : p) {
-                System.out.println(programmer.toString());
+                System.out.println(programmer.printList());
             }
         } catch (Exception e) {
-            System.out.println("团队暂无成员，请先加入成员");
+            System.out.println();
         }
     }
 
@@ -86,7 +88,18 @@ public class TeamView extends TeamException {
     }
 
     private void deleteMember() {
-
+        System.out.println("请输入要删除的员工TID：");
+        int id = TSUtility.readInt();
+        System.out.println("确认是否删除(Y/N)：");
+        char c = TSUtility.readConfirmSelection();
+        if (c == 'Y') {
+            try {
+                teamService.removeMember(id);
+            } catch (TeamException e) {
+                System.out.println("删除失败，原因： " + e.getMessage());
+            }
+        }
+        TSUtility.readReturn();
     }
 
 

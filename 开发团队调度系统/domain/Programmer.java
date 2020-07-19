@@ -15,24 +15,14 @@ public class Programmer extends Employee {
     private Status status = Status.FREE;
     private Equipment equipment;
 
-
     public Programmer() {
         super();
-
     }
 
-    public Programmer(int id, String name, int age, double salary,int memberId, Status status, Equipment equipment) {
+    public Programmer(int id, String name, int age, double salary, Equipment equipment) {
         super(id, name, age, salary);
-        this.memberId = memberId;
-        this.status = status;
         this.equipment = equipment;
     }
-
-//    public String getDescription() {
-//        return getEquipment().toString();
-//    }
-
-
 
     @Override
     public String toString() {
@@ -41,7 +31,7 @@ public class Programmer extends Employee {
     }
 
     public String printList() {
-        return super.toString() + "程序员"
+        return memberId + "/" + super.printInfo() + "程序员";
     }
 
     public int getMemberId() {

@@ -54,50 +54,58 @@ public class TeamService {
             if (number[2] == 1) {
                 throw new TeamException("团队中至多只能有一名架构师");
             } else {
-                Architect architect = (Architect)programmer;
-                team[total] = architect;
-                total++;
                 number[2]++;
-                System.out.println("添加成功");
             }
-
-
         } else if (programmer instanceof Designer) {
             if (number[1] == 2) {
                 throw new TeamException("团队中至多只能有两名设计师");
             } else {
-                Designer designer = (Designer) programmer;
-                team[total] = designer;
-                total++;
                 number[1]++;
-                System.out.println("添加成功");
             }
         } else {
             if (number[0] == 3) {
                 throw new TeamException("团队中至多只能有三名程序员");
             } else {
-                team[total] = programmer;
-                total++;
                 number[0]++;
-                System.out.println("添加成功");
             }
         }
+
+        team[total++] = programmer;
+        programmer.setMemberId(total);
+        programmer.setStatus(Status.BUSY);
+        System.out.println("添加成功");
     }
 
     public void removeMember(int memberId) throws TeamException {
-        if (memberId >= total) {
+        if (memberId > total) {
             throw new TeamException("找不到指定memberId的员工，删除失败");
         }
-        for (Programmer programmer : team) {
-            if (programmer.getId() == memberId) {
-                for (int i = memberId; i < total-1; i++) {
-                    team[i] = team[i+1];
-                    team[i].setId(i);
+
+        if (team[memberId-1] instanceof Architect) {
+            number[2]--;
+        } else if (team[memberId-1] instanceof Designer) {
+            number[1]--;
+        } else {
+            number[0]--;
+        }
+        team[memberId-1].setStatus(Status.FREE);
+
+        if (total > 1){
+            for (Programmer programmer : team) {
+                if (programmer.getMemberId() == memberId) {
+                    for (int i = memberId-1; i < total-1; i++) {
+                        team[i] = team[i+1];
+                        team[i].setMemberId(i+1);
+                    }
+                    break;
                 }
-                team[total-1] = null;
             }
         }
-    }
 
+        team[total-1] = null;
+        total--;
+        System.out.println("删除成功");
+
+    }
 
 }
