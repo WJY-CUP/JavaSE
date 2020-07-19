@@ -214,7 +214,7 @@ public interface Equipment {
 ~~~
 
 ~~~java
-class PC
+class PC implements Equipment
 
 //机器的型号
 - model: String
@@ -224,7 +224,7 @@ class PC
 ~~~
 
 ~~~java
-class NoteBook
+class NoteBook implements Equipment
  
 - model: String
 - price: double
@@ -232,7 +232,7 @@ class NoteBook
 ~~~
 
 ~~~java
-class Printer
+class Printer implements Equipment
 
 - name: String
 //机器的类型
